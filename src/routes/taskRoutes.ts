@@ -1,9 +1,15 @@
 import express, {Request, Response} from "express";
+import Task from "../models/taskdata";
 
 const router = express.Router();
 
-router.get('/allTasks', [],(req: Request, res: Response) => {
-    return res.send("All tasks wip");
+router.get('/allTasks', [],async (req: Request, res: Response) => {
+    try {
+        const tasks = await Task.find();
+        return res.send(tasks);
+    } catch (error) {
+        console.log("Error while fetching tasks: " + error);
+    }
 })
 
 router.get('/task/:id', (req, res) =>{
