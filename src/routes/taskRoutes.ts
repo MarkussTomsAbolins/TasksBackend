@@ -4,8 +4,11 @@ import Task from "../models/taskdata";
 const router = express.Router();
 
 router.get('/allTasks', [],async (req: Request, res: Response) => {
+    res.setHeader('Access-Control-Allow-Origin', '*');
     try {
+        //combine documents here pls
         const tasks = await Task.find();
+        console.log(tasks);
         return res.send(tasks);
     } catch (error) {
         console.log("Error while fetching tasks: " + error);
