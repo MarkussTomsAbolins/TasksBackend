@@ -10,7 +10,7 @@ const app = express();
 const port = 3001;
 app.use(json());
 app.use(taskRouter);
-app.use(Cors({origin: 'https://localhost:4200'}));
+app.use(Cors({origin: 'http://localhost:4200'}));
 
 
 
