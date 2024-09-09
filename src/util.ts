@@ -5,10 +5,8 @@ function mergeResponse(response: any[]){
         tasks: []
     };
     response.forEach(item => {
-        if (item._doc && item._doc.tasks && Array.isArray(item._doc.tasks)) {
-            item._doc.tasks.forEach((task: any) => {
-                taskList.tasks.push(task);
-            });
+        if(item.title && item.id){
+            taskList.tasks.push(item);
         }
     });
     return taskList;
